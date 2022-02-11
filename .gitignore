@@ -8,7 +8,6 @@
 **logs/
 **.env
 **__pycache__/
-*.csv
 /ny_taxi_postgres_data
 .ipynb_checkpoints/
 ny_taxi_postgres_data/
