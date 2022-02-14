@@ -3,13 +3,13 @@
 with green_data as (
     select *, 
         'Green' as service_type 
-    from `mimetic-core-338720`.`dbt_glebras`.`stg_green_tripdata`
+    from `mimetic-core-338720`.`production`.`stg_green_tripdata`
 ), 
 
 yellow_data as (
     select *, 
         'Yellow' as service_type
-    from `mimetic-core-338720`.`dbt_glebras`.`stg_yellow_tripdata`
+    from `mimetic-core-338720`.`production`.`stg_yellow_tripdata`
 ), 
 
 trips_unioned as (
@@ -19,7 +19,7 @@ trips_unioned as (
 ), 
 
 dim_zones as (
-    select * from `mimetic-core-338720`.`dbt_glebras`.`dim_zones`
+    select * from `mimetic-core-338720`.`production`.`dim_zones`
     where borough != 'Unknown'
 )
 select 
@@ -47,8 +47,8 @@ select
     trips_unioned.improvement_surcharge, 
     trips_unioned.total_amount, 
     trips_unioned.payment_type, 
-    trips_unioned.payment_type_description, 
-    trips_unioned.congestion_surcharge
+    trips_unioned.payment_type_description
+
 from trips_unioned
 inner join dim_zones as pickup_zone
 on trips_unioned.pickup_locationid = pickup_zone.locationid

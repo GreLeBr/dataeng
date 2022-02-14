@@ -42,7 +42,7 @@ select
     cast(mta_tax as numeric) as mta_tax,
     cast(tip_amount as numeric) as tip_amount,
     cast(tolls_amount as numeric) as tolls_amount,
-    cast(0 as numeric) as ehail_fee,
+
     cast(improvement_surcharge as numeric) as improvement_surcharge,
     cast(total_amount as numeric) as total_amount,
     cast(payment_type as integer) as payment_type,
@@ -53,8 +53,8 @@ select
         when 4 then 'Dispute'
         when 5 then 'Unknown'
         when 6 then 'Voided trip'
-    end as payment_type_description, 
-    cast(congestion_surcharge as numeric) as congestion_surcharge
+    end as get_payment_type_description
+    
 from tripdata
 where rn = 1
 

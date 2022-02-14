@@ -6,7 +6,7 @@ with trips_data as (
     select 
     -- Revenue grouping 
     pickup_zone as revenue_zone,
-    date_trunc('month', pickup_datetime) as revenue_month, 
+    date_trunc(pickup_datetime, month) as revenue_month, 
     --Note: For BQ use instead: date_trunc(pickup_datetime, month) as revenue_month, 
 
     service_type, 
@@ -20,7 +20,7 @@ with trips_data as (
 
     sum(improvement_surcharge) as revenue_monthly_improvement_surcharge,
     sum(total_amount) as revenue_monthly_total_amount,
-    sum(congestion_surcharge) as revenue_monthly_congestion_surcharge,
+
 
     -- Additional calculations
     count(tripid) as total_monthly_trips,

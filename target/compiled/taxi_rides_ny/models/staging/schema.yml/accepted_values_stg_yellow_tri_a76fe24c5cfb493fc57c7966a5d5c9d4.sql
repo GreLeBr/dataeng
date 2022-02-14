@@ -8,7 +8,7 @@ with all_values as (
         Payment_type as value_field,
         count(*) as n_records
 
-    from `mimetic-core-338720`.`dbt_glebras`.`stg_yellow_tripdata`
+    from `mimetic-core-338720`.`production`.`stg_yellow_tripdata`
     group by Payment_type
 
 )

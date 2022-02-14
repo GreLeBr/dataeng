@@ -13,7 +13,7 @@ with all_values as (
         Payment_type as value_field,
         count(*) as n_records
 
-    from `mimetic-core-338720`.`production`.`stg_green_tripdata`
+    from `mimetic-core-338720`.`production`.`stg_yellow_tripdata`
     group by Payment_type
 
 )
@@ -21,7 +21,7 @@ with all_values as (
 select *
 from all_values
 where value_field not in (
-    1,2
+    1,2,3,4,5,6
 )
 
 

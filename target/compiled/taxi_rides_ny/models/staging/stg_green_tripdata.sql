@@ -1,5 +1,12 @@
 
 
+with tripdata as 
+(
+  select *,
+    row_number() over(partition by vendorid, lpep_pickup_datetime) as rn
+  from `mimetic-core-338720`.`trips_data_all`.`green_tripdata`
+  where vendorid is not null 
+)
 select
     -- identifiers
     to_hex(md5(cast(coalesce(cast(vendorid as 
@@ -30,6 +37,7 @@ select
     cast(mta_tax as numeric) as mta_tax,
     cast(tip_amount as numeric) as tip_amount,
     cast(tolls_amount as numeric) as tolls_amount,
+
     cast(improvement_surcharge as numeric) as improvement_surcharge,
     cast(total_amount as numeric) as total_amount,
     cast(payment_type as integer) as payment_type,
@@ -40,6 +48,14 @@ select
         when 4 then 'Dispute'
         when 5 then 'Unknown'
         when 6 then 'Voided trip'
-    end as payment_type_description, 
-from `production`.`trips_data_all`.`green_tripdata`
-limit 100
+    end as payment_type_description
+    
+from tripdata
+where rn = 1
+
+
+-- dbt build --m <model.sql> --var 'is_test_run: false'
+
+
+  limit 100
+

@@ -32,12 +32,12 @@ select
     cast(mta_tax as numeric) as mta_tax,
     cast(tip_amount as numeric) as tip_amount,
     cast(tolls_amount as numeric) as tolls_amount,
-    cast(0 as numeric) as ehail_fee,
+
     cast(improvement_surcharge as numeric) as improvement_surcharge,
     cast(total_amount as numeric) as total_amount,
     cast(payment_type as integer) as payment_type,
-    {{ get_payment_type_description('payment_type') }} as payment_type_description, 
-    cast(congestion_surcharge as numeric) as congestion_surcharge
+    {{ get_payment_type_description('payment_type') }} as get_payment_type_description
+    
 from tripdata
 where rn = 1
 

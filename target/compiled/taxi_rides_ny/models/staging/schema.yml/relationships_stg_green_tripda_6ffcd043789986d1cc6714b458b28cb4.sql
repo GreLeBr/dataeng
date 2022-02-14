@@ -4,13 +4,13 @@
 
 with child as (
     select Pickup_locationid as from_field
-    from `mimetic-core-338720`.`dbt_glebras`.`stg_green_tripdata`
+    from `mimetic-core-338720`.`production`.`stg_green_tripdata`
     where Pickup_locationid is not null
 ),
 
 parent as (
     select locationid as to_field
-    from `mimetic-core-338720`.`dbt_glebras`.`taxi_zone_lookup`
+    from `mimetic-core-338720`.`production`.`taxi_zone_lookup`
 )
 
 select

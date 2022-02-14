@@ -21,7 +21,7 @@ with all_values as (
 select *
 from all_values
 where value_field not in (
-    1,2
+    1,2,3,4,5,6
 )
 
 
