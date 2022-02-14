@@ -1,6 +1,6 @@
 
 
-  create or replace view `mimetic-core-338720`.`dbt_glebras`.`stg_yellow_tripdata`
+  create or replace view `mimetic-core-338720`.`production`.`stg_yellow_tripdata`
   OPTIONS()
   as 
  
