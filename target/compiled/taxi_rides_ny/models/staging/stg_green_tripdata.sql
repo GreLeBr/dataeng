@@ -41,5 +41,5 @@ select
         when 5 then 'Unknown'
         when 6 then 'Voided trip'
     end as payment_type_description, 
-from `mimetic-core-338720`.`trips_data_all`.`green_tripdata`
+from `production`.`trips_data_all`.`green_tripdata`
 limit 100
